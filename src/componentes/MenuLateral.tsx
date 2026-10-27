@@ -4,9 +4,12 @@ type Props = {
   ruta: string
   abierto: boolean
   cerrar: () => void
+  nombre: string
+  cerrarSesion: () => void
+  cerrandoSesion: boolean
 }
 
-export function MenuLateral({ ruta, abierto, cerrar }: Props) {
+export function MenuLateral({ ruta, abierto, cerrar, nombre, cerrarSesion, cerrandoSesion }: Props) {
   return (
     <>
       {abierto && <button className="menu-overlay" aria-label="Cerrar menú" onClick={cerrar} />}
@@ -26,7 +29,8 @@ export function MenuLateral({ ruta, abierto, cerrar }: Props) {
             </div>
           ))}
         </nav>
-        <div className="sidebar-footer"><span className="avatar">R</span><span><strong>Ricardo</strong><small>Espacio personal</small></span><span className="footer-dots">···</span></div>
+        <div className="sidebar-footer"><span className="avatar">{nombre.charAt(0).toUpperCase()}</span><span className="sidebar-user"><strong>{nombre}</strong><small>Espacio personal</small></span></div>
+        <button className="logout-button" type="button" onClick={cerrarSesion} disabled={cerrandoSesion}>{cerrandoSesion ? 'Cerrando sesión…' : '↪  Cerrar sesión'}</button>
       </aside>
     </>
   )

@@ -7,11 +7,11 @@ const tarjetas = [
   { nombre: 'Ahorros', monto: 'S/ 12,800.00', icono: '◇', tono: 'amarillo', nota: 'Datos de ejemplo' },
 ]
 
-export function Inicio() {
+export function Inicio({ nombre }: { nombre: string }) {
   const [visible, setVisible] = useState(true)
   return <>
     <section className="welcome">
-      <div><div className="eyebrow">TU RESUMEN FINANCIERO</div><h1>¡Hola, Ricardo! <span>👋</span></h1><p>¿En qué se fue la plata esta vez?</p></div>
+      <div><div className="eyebrow">TU RESUMEN FINANCIERO</div><h1>¡Hola, {nombre}! <span>👋</span></h1><p>¿En qué se fue la plata esta vez?</p></div>
       <button className="privacy-button" type="button" onClick={() => setVisible(!visible)} aria-pressed={!visible}>{visible ? '◉  Ocultar montos' : '◎  Mostrar montos'}</button>
     </section>
     <div className="demo-banner"><span className="demo-dot" /> Vista de demostración <span className="demo-separator">·</span> Los montos son ficticios y solo ilustran el diseño.</div>
